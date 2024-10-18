@@ -1,0 +1,20 @@
+name: Запустить скрипт Python
+
+on: 
+  push:
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Проверка репозитория
+        uses: actions/checkout@v3
+
+      - name: Настройка Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.12.6'  
+
+      - name: Запустить скрипт Python
+        run: python script.py  
