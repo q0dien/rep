@@ -214,10 +214,10 @@ UniversityApi
 
 ```json
 {
-  "firstName": "Данияр",
-  "lastName": "Ахметов",
-  "email": "daniyar@example.com",
-  "birthDate": "2005-08-20"
+  "firstName": "Медина",
+  "lastName": "Мусаева",
+  "email": "medina@example.com",
+  "birthDate": "2005-12-12"
 }
 ```
 
