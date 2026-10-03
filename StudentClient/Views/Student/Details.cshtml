@@ -1,0 +1,57 @@
+@model StudentClient.Models.Student?
+
+@{
+    ViewData["Title"] = "Информация о студенте";
+}
+
+<div class="container mt-4">
+    <h1>Информация о студенте</h1>
+
+    @if (Model == null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+
+        <a asp-action="Index" class="btn btn-secondary">
+            Вернуться к списку
+        </a>
+    }
+    else
+    {
+        <div class="card mt-4">
+            <div class="card-body">
+                <h4 class="card-title">@Model.FullName</h4>
+
+                <p>
+                    <strong>ID:</strong> @Model.Id
+                </p>
+
+                <p>
+                    <strong>Группа:</strong> @Model.Group
+                </p>
+
+                <p>
+                    <strong>Курс:</strong> @Model.Course
+                </p>
+
+                <p>
+                    <strong>Email:</strong> @Model.Email
+                </p>
+
+                <div class="mt-3">
+                    <a asp-action="Edit"
+                       asp-route-id="@Model.Id"
+                       class="btn btn-warning">
+                        Изменить
+                    </a>
+
+                    <a asp-action="Index"
+                       class="btn btn-secondary">
+                        Вернуться к списку
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

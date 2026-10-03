@@ -1,0 +1,92 @@
+@model StudentClient.Models.Student
+
+@{
+    ViewData["Title"] = "Изменить студента";
+}
+
+<div class="container mt-4">
+    <h1>Изменить данные студента</h1>
+
+    <form asp-action="Edit" method="post" class="mt-4">
+
+        @Html.AntiForgeryToken()
+
+        <input asp-for="Id" type="hidden" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="FullName" class="form-label">
+                ФИО
+            </label>
+
+            <input asp-for="FullName"
+                   class="form-control" />
+
+            <span asp-validation-for="FullName"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Group" class="form-label">
+                Группа
+            </label>
+
+            <input asp-for="Group"
+                   class="form-control" />
+
+            <span asp-validation-for="Group"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Course" class="form-label">
+                Курс
+            </label>
+
+            <input asp-for="Course"
+                   type="number"
+                   class="form-control"
+                   min="1"
+                   max="6" />
+
+            <span asp-validation-for="Course"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">
+                Email
+            </label>
+
+            <input asp-for="Email"
+                   type="email"
+                   class="form-control" />
+
+            <span asp-validation-for="Email"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <button type="submit"
+                class="btn btn-warning">
+            Сохранить изменения
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Отмена
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
