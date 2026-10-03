@@ -1,0 +1,74 @@
+@model TaskManagerClient.Models.TaskItem
+
+@{
+    ViewData["Title"] = "Изменить задачу";
+}
+
+<div class="container mt-4">
+    <h1>Изменить задачу</h1>
+
+    <form asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="Id" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3">
+        </div>
+
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">
+                Название
+            </label>
+
+            <input asp-for="Title"
+                   class="form-control" />
+
+            <span asp-validation-for="Title"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label">
+                Описание
+            </label>
+
+            <textarea asp-for="Description"
+                      class="form-control"
+                      rows="4">
+            </textarea>
+
+            <span asp-validation-for="Description"
+                  class="text-danger">
+            </span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="IsCompleted"
+                   class="form-check-input" />
+
+            <label asp-for="IsCompleted"
+                   class="form-check-label">
+                Задача выполнена
+            </label>
+        </div>
+
+        <button type="submit"
+                class="btn btn-primary">
+            Сохранить изменения
+        </button>
+
+        <a asp-action="Index"
+           class="btn btn-secondary">
+            Отмена
+        </a>
+    </form>
+</div>

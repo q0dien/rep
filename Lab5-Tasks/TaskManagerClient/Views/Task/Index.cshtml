@@ -1,0 +1,118 @@
+@model List<TaskManagerClient.Models.TaskItem>
+
+@{
+    ViewData["Title"] = "Список задач";
+}
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>Список задач</h1>
+            <p class="text-muted">Задачи, полученные из Web API</p>
+        </div>
+
+        <a asp-action="Create" class="btn btn-primary">
+            Добавить задачу
+        </a>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            Задач пока нет.
+        </div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>Название</th>
+                    <th>Описание</th>
+                    <th>Статус</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var task in Model)
+                {
+                    <tr>
+                        <td>@task.Id</td>
+
+                        <td>
+                            <strong>@task.Title</strong>
+                        </td>
+
+                        <td>@task.Description</td>
+
+                        <td>
+                            @if (task.IsCompleted)
+                            {
+                                <span class="badge bg-success">
+                                    Выполнено
+                                </span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">
+                                    В работе
+                                </span>
+                            }
+                        </td>
+
+                        <td>
+                            <a asp-action="Details"
+                               asp-route-id="@task.Id"
+                               class="btn btn-sm btn-info">
+                                Просмотр
+                            </a>
+
+                            <a asp-action="Edit"
+                               asp-route-id="@task.Id"
+                               class="btn btn-sm btn-warning">
+                                Изменить
+                            </a>
+
+                            <form asp-action="Delete"
+                                  asp-route-id="@task.Id"
+                                  method="post"
+                                  class="d-inline"
+                                  onsubmit="return confirm('Вы уверены, что хотите удалить эту задачу?');">
+
+                                @Html.AntiForgeryToken()
+
+                                <button type="submit"
+                                        class="btn btn-sm btn-danger">
+                                    Удалить
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
