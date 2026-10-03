@@ -1,0 +1,22 @@
+## Visual Studio / VS Code
+.vs/
+.vscode/
+
+## Build results
+[Bb]in/
+[Oo]bj/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio Code
+.history/
+
+## Logs
+*.log
+
+## OS files
+.DS_Store
