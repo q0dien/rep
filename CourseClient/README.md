@@ -133,119 +133,119 @@ http://localhost:5065
 
 **Скриншот 1. Запуск проекта**
 
-![Запуск проекта](CourseApi/Screenshots/01_Запуск%20проекта.png)
+![Запуск проекта](../CourseApi/Screenshots/01_Запуск%20проекта.png)
 
 **Скриншот 2. Получение списка курсов**
 
-![GET все курсы](CourseApi/Screenshots/02_GET%20все%20курсы.png)
+![GET все курсы](../CourseApi/Screenshots/02_GET%20все%20курсы.png)
 
 **Скриншот 3. Получение курса по идентификатору**
 
-![GET курс по ID](CourseApi/Screenshots/03_GET%20курс%20по%20ID.png)
+![GET курс по ID](../CourseApi/Screenshots/03_GET%20курс%20по%20ID.png)
 
 **Скриншот 4. Обработка отсутствующего курса**
 
-![GET 404](CourseApi/Screenshots/04_GET%20404.png)
+![GET 404](../CourseApi/Screenshots/04_GET%20404.png)
 
 **Скриншот 5. Swagger**
 
-![Swagger](CourseApi/Screenshots/05_Swagger.png)
+![Swagger](../CourseApi/Screenshots/05_Swagger.png)
 
 **Скриншот 6. Создание курса**
 
-![POST](CourseApi/Screenshots/06_POST.png)
+![POST](../CourseApi/Screenshots/06_POST.png)
 
 **Скриншот 7. Получение созданного курса**
 
-![GET добавленного курса](CourseApi/Screenshots/07_GET%20добавленного%20курса.png)
+![GET добавленного курса](../CourseApi/Screenshots/07_GET%20добавленного%20курса.png)
 
 **Скриншот 8. Изменение курса**
 
-![PUT](CourseApi/Screenshots/08_PUT.png)
+![PUT](../CourseApi/Screenshots/08_PUT.png)
 
 **Скриншот 9. Удаление курса**
 
-![DELETE](CourseApi/Screenshots/09_DELETE.png)
+![DELETE](../CourseApi/Screenshots/09_DELETE.png)
 
 **Скриншот 10. Проверка после удаления**
 
-![GET после удаления](CourseApi/Screenshots/10_GET%20после%20удаления.png)
+![GET после удаления](../CourseApi/Screenshots/10_GET%20после%20удаления.png)
 
 ### 7.2. Регистрация, аутентификация и JWT
 
 **Скриншот 11. Регистрация пользователя**
 
-![Регистрация](CourseApi/Screenshots/11_Регистрация.png)
+![Регистрация](../CourseApi/Screenshots/11_Регистрация.png)
 
 **Скриншот 12. Вход и получение JWT-токена**
 
-![Вход JWT](CourseApi/Screenshots/12_Вход_JWT.png)
+![Вход JWT](../CourseApi/Screenshots/12_Вход_JWT.png)
 
 **Скриншот 13. Информация о текущем пользователе**
 
-![Текущий пользователь](CourseApi/Screenshots/13_Текущий_пользователь.png)
+![Текущий пользователь](../CourseApi/Screenshots/13_Текущий_пользователь.png)
 
 **Скриншот 14. Ошибка входа при неправильном пароле**
 
-![Ошибка входа](CourseApi/Screenshots/14_Ошибка_входа.png)
+![Ошибка входа](../CourseApi/Screenshots/14_Ошибка_входа.png)
 
 **Скриншот 15. Доступ к защищённому эндпоинту без токена**
 
-![Доступ без токена](CourseApi/Screenshots/15_Доступ_без_токена.png)
+![Доступ без токена](../CourseApi/Screenshots/15_Доступ_без_токена.png)
 
 ### 7.3. Проверка ролей и прав доступа
 
 **Скриншот 16. Ограничение удаления курса для студента**
 
-![Доступ студента](CourseApi/Screenshots/16_Доступ_студента.png)
+![Доступ студента](../CourseApi/Screenshots/16_Доступ_студента.png)
 
 **Скриншот 17. Защита от самостоятельного назначения роли Admin**
 
-![Защита роли](CourseApi/Screenshots/17_Защита_роли.png)
+![Защита роли](../CourseApi/Screenshots/17_Защита_роли.png)
 
 ### 7.4. Профили, записи и оценки
 
 **Скриншот 18. Профиль студента**
 
-![Профиль студента](CourseApi/Screenshots/18_Профиль_студента.png)
+![Профиль студента](../CourseApi/Screenshots/18_Профиль_студента.png)
 
 **Скриншот 19. Запись студента на курс**
 
-![Запись на курс](CourseApi/Screenshots/19_Запись_на_курс.png)
+![Запись на курс](../CourseApi/Screenshots/19_Запись_на_курс.png)
 
 **Скриншот 20. Выставление оценки преподавателем**
 
-![Выставление оценки](CourseApi/Screenshots/20_Выставление_оценки.png)
+![Выставление оценки](../CourseApi/Screenshots/20_Выставление_оценки.png)
 
 **Скриншот 21. Запрет студенту изменять оценку**
 
-![Защита оценки](CourseApi/Screenshots/21_Защита_оценки.png)
+![Защита оценки](../CourseApi/Screenshots/21_Защита_оценки.png)
 
 ### 7.5. Версионирование API
 
 **Скриншот 22. Расширенный ответ API v2**
 
-![API v2](CourseApi/Screenshots/22_API_v2.png)
+![API v2](../CourseApi/Screenshots/22_API_v2.png)
 
 ### 7.6. База данных и документация API
 
 **Скриншот 23. Таблицы PostgreSQL**
 
-![PostgreSQL](CourseApi/Screenshots/23_PostgreSQL_Таблицы.png)
+![PostgreSQL](../CourseApi/Screenshots/23_PostgreSQL_Таблицы.png)
 
 **Скриншот 24. Общий список эндпоинтов Swagger**
 
-![Swagger общий](CourseApi/Screenshots/24_Swagger_Общий.png)
+![Swagger общий](../CourseApi/Screenshots/24_Swagger_Общий.png)
 
 ### 7.7. Веб-клиент
 
 **Скриншот 25. Страница со списком курсов**
 
-![Курсы клиента](CourseApi/Screenshots/25_Курсы_Клиент.png)
+![Курсы клиента](../CourseApi/Screenshots/25_Курсы_Клиент.png)
 
 **Скриншот 26. Главная страница приложения**
 
-![HomePage](CourseApi/Screenshots/26_HomePage.png)
+![HomePage](../CourseApi/Screenshots/26_HomePage.png)
 
 ## 8. Безопасность
 
