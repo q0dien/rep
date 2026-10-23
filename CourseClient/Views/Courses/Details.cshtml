@@ -1,0 +1,22 @@
+﻿@model CourseClient.Models.CourseViewModel
+
+@{
+    ViewData["Title"] = "нформация о курсе";
+}
+
+<div class="container mt-4">
+    <h1>@Model.Name</h1>
+
+    <div class="card shadow-sm mt-3">
+        <div class="card-body">
+            <p><strong>ID курса:</strong> @Model.Id</p>
+            <p><strong>реподаватель:</strong> @Model.Teacher</p>
+            <p><strong>редиты:</strong> @Model.Credits</p>
+            <a asp-controller="Courses"
+               asp-action="Index"
+               class="btn btn-secondary">
+                азад к курсам
+            </a>
+        </div>
+    </div>
+</div>

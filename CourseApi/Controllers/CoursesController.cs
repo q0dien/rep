@@ -1,40 +1,39 @@
+
+using CourseApi.Data;
 using CourseApi.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CourseApi.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/courses")]
+[Route("api/v1/courses")]
 public class CoursesController : ControllerBase
 {
-    private static List<Course> courses = new List<Course>
-    {
-        new Course
-        {
-            Id = 1,
-            Name = "Web Services",
-            Teacher = "Teacher 1",
-            Credits = 5
-        },
-        new Course
-        {
-            Id = 2,
-            Name = "Databases",
-            Teacher = "Teacher 2",
-            Credits = 4
-        }
-    };
+    private readonly ApplicationDbContext _context;
 
-    [HttpGet]
-    public ActionResult<List<Course>> GetAll()
+    public CoursesController(ApplicationDbContext context)
     {
+        _context = context;
+    }
+
+    // Список курсов доступен всем
+    [HttpGet]
+    [AllowAnonymous]
+    public async Task<ActionResult<IEnumerable<Course>>> GetCourses()
+    {
+        var courses = await _context.Courses.ToListAsync();
         return Ok(courses);
     }
 
+    // Информация об одном курсе доступна всем
     [HttpGet("{id}")]
-    public ActionResult<Course> GetById(int id)
+    [AllowAnonymous]
+    public async Task<ActionResult<Course>> GetCourse(int id)
     {
-        var course = courses.FirstOrDefault(x => x.Id == id);
+        var course = await _context.Courses.FindAsync(id);
 
         if (course == null)
         {
@@ -44,43 +43,59 @@ public class CoursesController : ControllerBase
         return Ok(course);
     }
 
+    // Создавать курсы может только Admin
     [HttpPost]
-    public ActionResult<Course> Create(Course course)
+    [Authorize(Roles = "Admin")]
+    public async Task<ActionResult<Course>> CreateCourse(Course course)
     {
-        course.Id = courses.Max(x => x.Id) + 1;
-        courses.Add(course);
+        course.Id = 0;
 
-        return CreatedAtAction(nameof(GetById), new { id = course.Id }, course);
+        _context.Courses.Add(course);
+        await _context.SaveChangesAsync();
+
+        return CreatedAtAction(
+            nameof(GetCourse),
+            new { id = course.Id },
+            course);
     }
 
+    // Изменять курсы может только Admin
     [HttpPut("{id}")]
-    public ActionResult<Course> Update(int id, Course course)
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> UpdateCourse(
+        int id,
+        Course updatedCourse)
     {
-        var oldCourse = courses.FirstOrDefault(x => x.Id == id);
-
-        if (oldCourse == null)
-        {
-            return NotFound();
-        }
-
-        oldCourse.Name = course.Name;
-        oldCourse.Teacher = course.Teacher;
-        oldCourse.Credits = course.Credits;
-
-        return Ok(oldCourse);
-    }
-
-    [HttpDelete("{id}")]
-    public ActionResult Delete(int id)
-    {
-        var course = courses.FirstOrDefault(x => x.Id == id);
+        var course = await _context.Courses.FindAsync(id);
 
         if (course == null)
         {
             return NotFound();
         }
 
-        courses.Remove(course);
+        course.Name = updatedCourse.Name;
+        course.Teacher = updatedCourse.Teacher;
+        course.Credits = updatedCourse.Credits;
+
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
+    // Удалять курсы может только Admin
+    [HttpDelete("{id}")]
+    [Authorize(Roles = "Admin")]
+    public async Task<IActionResult> DeleteCourse(int id)
+    {
+        var course = await _context.Courses.FindAsync(id);
+
+        if (course == null)
+        {
+            return NotFound();
+        }
+
+        _context.Courses.Remove(course);
+        await _context.SaveChangesAsync();
 
         return NoContent();
     }

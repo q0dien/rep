@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "API недоступен";
+}
+
+<div class="container mt-5">
+    <div class="alert alert-warning">
+        <h2>е удалось загрузить курсы</h2>
+        <p>Сервис курсов сейчас недоступен. роверьте, запущен ли API, и попробуйте позже.</p>
+        <a asp-controller="Courses"
+           asp-action="Index"
+           class="btn btn-primary">
+            опробовать снова
+        </a>
+    </div>
+</div>
